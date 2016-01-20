@@ -7,8 +7,6 @@ Plex Version API is a Python library designed to allow quick and easy retrieval 
 .. _Plex Media Server: `Plex Homepage`_
 .. _plex.tv: `Plex Homepage`_
 
-----
-
 Basic Usage
 -----------
 
