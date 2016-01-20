@@ -27,6 +27,9 @@ class VersionDownloader(object):
     def __iter__(self):
         return iter(self.versions)
 
+    def __len__(self):
+        return len(self.versions)
+
 
 class PlexVersionDownloader(VersionDownloader):
     PLEX_DOWNLOAD_URL = "https://plex.tv/downloads"
