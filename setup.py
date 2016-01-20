@@ -6,6 +6,7 @@ Version information is retrieved from https://plex.tv.
 from setuptools import setup
 from codecs import open
 from os import path
+import plex_version
 
 here = path.abspath(path.dirname(__file__))
 
@@ -15,7 +16,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='plex_version',
-    version='0.1.0',
+    version=plex_version.__version__,
     description='Plex Version API',
     long_description=long_description,
     author='Jack Wilsdon (jackwilsdon)',
