@@ -15,7 +15,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='plex_version',
-    version='0.1.1',
+    version='0.1.2',
     description='Plex Version API',
     long_description=long_description,
     author='Jack Wilsdon (jackwilsdon)',
