@@ -19,10 +19,13 @@ class Client(object):
             self.login(username, password)
 
     def _complete_login(self, response):
-        if response.status_code == 401:
-            raise _exceptions.IncorrectLoginError(response.content)
-
         response_dict = response.json()
+
+        if response.status_code == 401:
+            if 'error' in response_dict:
+                raise _exceptions.IncorrectLoginError(response_dict['error'])
+            else:
+                raise _exceptions.IncorrectLoginError(response.content)
 
         try:
             self.auth_token = response_dict['user']['authentication_token']
