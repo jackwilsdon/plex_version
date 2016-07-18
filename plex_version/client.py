@@ -53,7 +53,7 @@ class Client(object):
 
         self._complete_login(response)
 
-    def _complete_fetch_versions(self, platform, response):
+    def _complete_fetch_versions(self, platform, plexpass, response):
         if response.status_code != 200:
             raise _exceptions.ClientError('expected 200 but got {}'.format(
                                           response.status_code))
@@ -70,17 +70,23 @@ class Client(object):
                 build = release_data['build']
                 url = release_data['url']
 
-                version = _version.PlexVersion(platform, distro, build, date,
-                                               version_string, url)
+                version = _version.PlexVersion(platform, distro, build,
+                                               plexpass, date, version_string,
+                                               url)
 
                 self.versions.append(version)
 
-    def _fetch_versions(self, platform, timeout):
+    def _fetch_versions(self, platform, plexpass, timeout):
         url = self.PLEX_PLATFORM_URL.format(platform)
 
         headers = {
             'X-Plex-Client-Identifier': self.identifier
         }
+
+        data = {}
+
+        if plexpass:
+            data['channel'] = 'plexpass'
 
         if self.auth_token is not None:
             headers['X-Plex-Token'] = self.auth_token
@@ -88,39 +94,32 @@ class Client(object):
         if timeout is None:
             timeout = self.timeout
 
-        response = _requests.get(url, headers=headers, timeout=timeout)
+        response = _requests.get(url,
+                                 headers=headers,
+                                 data=data,
+                                 timeout=timeout)
 
-        self._complete_fetch_versions(platform, response)
+        self._complete_fetch_versions(platform, plexpass, response)
 
-    def _get_existing(self, platform, distro, build):
+    def _get_existing(self, platform, distro, build, plexpass):
         matches = []
 
         for version in self.versions:
-            match_count = 0
-
-            if (platform is not None and platform == version.platform) or \
-                    platform is None:
-                match_count += 1
-
-            if (distro is not None and distro == version.distro) or \
-                    distro is None:
-                match_count += 1
-
-            if (build is not None and build == version.build) or \
-                    build is None:
-                match_count += 1
-
-            if match_count == 3:
-                matches.append(version)
+            if platform is None or platform == version.platform:
+                if distro is None or distro == version.distro:
+                    if build is None or build == version.build:
+                        if plexpass is None or plexpass == version.plexpass:
+                            matches.append(version)
 
         return matches
 
-    def get(self, platform=None, distro=None, build=None, timeout=None):
-        matches = self._get_existing(platform, distro, build)
+    def get(self, platform=None, distro=None, build=None, plexpass=False,
+            timeout=None):
+        matches = self._get_existing(platform, distro, build, plexpass)
 
         if len(matches) == 0:
-            self._fetch_versions(platform, timeout)
-            matches = self._get_existing(platform, distro, build)
+            self._fetch_versions(platform, plexpass, timeout)
+            matches = self._get_existing(platform, distro, build, plexpass)
 
         return matches
 

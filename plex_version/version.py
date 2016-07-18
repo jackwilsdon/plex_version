@@ -30,10 +30,12 @@ def _parse_version(version_string):
 
 
 class PlexVersion(object):
-    def __init__(self, platform, distro, build, date, version_string, url):
+    def __init__(self, platform, distro, build, plexpass, date, version_string,
+                 url):
         self._platform = platform
         self._distro = distro
         self._build = build
+        self._plexpass = plexpass
         self._date = date
         self._version = _parse_version(version_string)
         self._version_string = version_string
@@ -50,6 +52,10 @@ class PlexVersion(object):
     @property
     def build(self):
         return self._build
+
+    @property
+    def plexpass(self):
+        return self._plexpass
 
     @property
     def date(self):
@@ -69,42 +75,43 @@ class PlexVersion(object):
 
     @property
     def major_version(self):
-        return self[0]
+        return self._version[0]
 
     @property
     def minor_version(self):
-        return self[1]
+        return self._version[1]
 
     @property
     def patch_version(self):
-        return self[2]
+        return self._version[2]
 
     @property
     def build_number(self):
-        return self[3]
+        return self._version[3]
 
     @property
     def commit(self):
-        return self[4]
+        return self._version[4]
 
     def __str__(self):
         return '{} {} ({})'.format(self.distro, self.build,
                                    self._version_string)
 
     def __repr__(self):
-        return str(self)
-
-    def __getitem__(self, index):
-        return self.version[index]
+        return ('{}(platform={}, distro={}, build={}, plexpass={}, date={}, '
+                'version_string={}, url={})').format(self.__class__.__name__,
+                                                     *map(repr, [
+                                                         self.platform,
+                                                         self.distro,
+                                                         self.build,
+                                                         self.plexpass,
+                                                         self.date,
+                                                         self.version_string,
+                                                         self.url
+                                                     ]))
 
     def __eq__(self, other):
-        return all([self[k] == other[k] for k in range(3)])
-
-    def __gt__(self, other):
-        if self == other:
-            return False
-
-        return not any([self[k] <= other[k] for k in range(3)])
+        return repr(self) == repr(other)
 
 
 __all__ = ('PlexVersion',)
