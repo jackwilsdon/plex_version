@@ -1,9 +1,6 @@
-from .version import PlexVersion
-from .parser import PlexVersionParser
-from .downloader import PlexVersionDownloader, PlexPassVersionDownloader
+from . import client, exceptions, version
 
-__version__ = '0.1.2'
+__version__ = '1.0.0'
 __author__ = 'Jack Wilsdon <jack.wilsdon@gmail.com>'
 
-__all__ = ['PlexVersion', 'PlexVersionParser', 'PlexVersionDownloader',
-           'PlexPassVersionDownloader']
+__all__ = ('client', 'exceptions', 'version')

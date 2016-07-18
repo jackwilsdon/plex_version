@@ -15,7 +15,7 @@ with _open(readme_path, encoding='utf-8') as readme_file:
 
 _setuptools.setup(
     name='plex_version',
-    version='0.1.2',
+    version='1.0.0',
     description='Plex Version API',
     long_description=long_description,
     author='Jack Wilsdon (jackwilsdon)',
@@ -40,7 +40,6 @@ _setuptools.setup(
     keywords='plex version',
     packages=['plex_version'],
     install_requires=[
-        'beautifulsoup4>=4,<5',
         'requests>=2,<3'
     ]
 )
