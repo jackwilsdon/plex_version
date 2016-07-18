@@ -20,7 +20,7 @@ class Client(object):
 
     def _complete_login(self, response):
         if response.status_code == 401:
-            raise _exceptions.IncorrectLoginException(response.content)
+            raise _exceptions.IncorrectLoginError(response.content)
 
         response_dict = response.json()
 
