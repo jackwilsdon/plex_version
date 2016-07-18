@@ -20,6 +20,7 @@ setup(
     long_description=long_description,
     author='Jack Wilsdon (jackwilsdon)',
     author_email='jack.wilsdon@gmail.com',
+    url='https://github.com/jackwilsdon/plex_version',
     license='AGPL-3.0',
     classifiers=[
         'Development Status :: 3 - Alpha',
