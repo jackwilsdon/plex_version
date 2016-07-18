@@ -94,8 +94,12 @@ class PlexVersion(object):
         return self._version[4]
 
     def __str__(self):
-        return '{} {} ({})'.format(self.distro, self.build,
-                                   self._version_string)
+        version_string = self._version_string
+
+        if self.plexpass:
+            version_string += ' plexpass'
+
+        return '{} {} ({})'.format(self.distro, self.build, version_string)
 
     def __repr__(self):
         return ('{}(platform={}, distro={}, build={}, plexpass={}, date={}, '
