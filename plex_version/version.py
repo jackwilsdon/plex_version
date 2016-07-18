@@ -1,5 +1,4 @@
 import re as _re
-import collections as _collections
 
 
 PLEX_MEDIA_SERVER = 1
