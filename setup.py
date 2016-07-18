@@ -15,7 +15,7 @@ with _open(readme_path, encoding='utf-8') as readme_file:
 
 _setuptools.setup(
     name='plex_version',
-    version='1.0.3',
+    version='1.0.4',
     description='Plex Version API',
     long_description=long_description,
     author='Jack Wilsdon (jackwilsdon)',
