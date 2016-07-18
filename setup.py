@@ -3,17 +3,17 @@
 Version information is retrieved from https://plex.tv.
 """
 
-from setuptools import setup
-from codecs import open
-from os import path
+from os import path as _path
+from codecs import open as _open
+import setuptools as _setuptools
 
-here = path.abspath(path.dirname(__file__))
+setup_directory = _path.dirname(__file__)
+readme_path = _path.join(setup_directory, 'README.rst')
 
-# Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+with _open(readme_path, encoding='utf-8') as readme_file:
+    long_description = readme_file.read()
 
-setup(
+_setuptools.setup(
     name='plex_version',
     version='0.1.2',
     description='Plex Version API',
