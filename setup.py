@@ -1,7 +1,7 @@
-"""Plex Version API
+'''Plex Version API
 
 Version information is retrieved from https://plex.tv.
-"""
+'''
 
 from os import path as _path
 from codecs import open as _open
