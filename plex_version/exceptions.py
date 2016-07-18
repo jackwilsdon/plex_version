@@ -6,8 +6,4 @@ class IncorrectLoginError(ClientError):
     pass
 
 
-class InvalidPlatformError(ClientError):
-    pass
-
-
-__all__ = ('ClientError', 'IncorrectLoginError', 'InvalidPlatformError')
+__all__ = ('ClientError', 'IncorrectLoginError')
