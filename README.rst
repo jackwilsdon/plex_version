@@ -25,7 +25,6 @@ Retrieving a list of all public Plex versions from the API
     # Print the list of versions
     print(versions)
 
-Expected output:
 ::
 
     [
@@ -49,7 +48,6 @@ Retrieving a list of all Plex Pass versions from the API
     # Print the list of versions
     print(versions)
 
-Expected output:
 ::
 
     [
