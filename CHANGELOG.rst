@@ -1,6 +1,9 @@
 Plex Version API Changelog
 ==========================
 
+1.0.8.dev0
+----------
+
 1.0.7
 -----
  - Override ``__dict__`` for ``PlexVersion``
