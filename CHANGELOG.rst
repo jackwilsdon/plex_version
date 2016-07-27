@@ -1,8 +1,8 @@
 Plex Version API Changelog
 ==========================
 
-1.0.6 (in development)
-----------------------
+1.0.6
+-----
  - Update changelog to cover previous versions
  - Deduplicate version number so that it is only stored inside ``plex_version`` itself
 
