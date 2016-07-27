@@ -4,20 +4,19 @@ Version information is retrieved from https://plex.tv.
 '''
 
 from os import path as _path
-from codecs import open as _open
 import setuptools as _setuptools
+from setup_functions import get_file_content
+
 
 setup_directory = _path.dirname(__file__)
 readme_path = _path.join(setup_directory, 'README.rst')
 
-with _open(readme_path, encoding='utf-8') as readme_file:
-    long_description = readme_file.read()
 
 _setuptools.setup(
     name='plex_version',
     version='1.0.5',
     description='Plex Version API',
-    long_description=long_description,
+    long_description=get_file_content(readme_path),
     author='Jack Wilsdon',
     author_email='jack.wilsdon@gmail.com',
     url='https://github.com/jackwilsdon/plex_version',
