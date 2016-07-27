@@ -1,6 +1,9 @@
 Plex Version API Changelog
 ==========================
 
+1.0.7.dev0
+----------
+
 1.0.6
 -----
  - Update changelog to cover previous versions
