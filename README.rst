@@ -1,7 +1,7 @@
 Plex Version API
 ================
 
-Plex Version API is a Python library designed to allow quick and easy retrieval of the latest version of `Plex Media Server`_ from plex.tv_.
+Plex Version API is a Python library designed to the allow quick and easy retrieval of the latest version of Plex software from plex.tv_.
 
 .. _Plex Homepage: https://plex.tv
 .. _Plex Media Server: `Plex Homepage`_
