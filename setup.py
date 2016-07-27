@@ -18,7 +18,7 @@ _setuptools.setup(
     version='1.0.5',
     description='Plex Version API',
     long_description=long_description,
-    author='Jack Wilsdon (jackwilsdon)',
+    author='Jack Wilsdon',
     author_email='jack.wilsdon@gmail.com',
     url='https://github.com/jackwilsdon/plex_version',
     license='AGPL-3.0',
