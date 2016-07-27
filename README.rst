@@ -12,7 +12,7 @@ Basic Usage
 
 Retrieving a list of all public Plex versions from the API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-::
+.. code-block:: python
 
     import plex_version
 
@@ -25,7 +25,7 @@ Retrieving a list of all public Plex versions from the API
     # Print the list of versions
     print(versions)
 
-::
+.. code-block:: python
 
     [
         PlexVersion(platform=1, distro=u'freebsd', build=u'freebsd-x86_64', plexpass=False, ...),
@@ -35,7 +35,7 @@ Retrieving a list of all public Plex versions from the API
 
 Retrieving a list of all Plex Pass versions from the API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-::
+.. code-block:: python
 
     import plex_version
 
@@ -48,7 +48,7 @@ Retrieving a list of all Plex Pass versions from the API
     # Print the list of versions
     print(versions)
 
-::
+.. code-block:: python
 
     [
         PlexVersion(platform=1, distro=u'freebsd', build=u'freebsd-x86_64', plexpass=True, ...),
