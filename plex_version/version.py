@@ -116,5 +116,17 @@ class PlexVersion(object):
     def __eq__(self, other):
         return repr(self) == repr(other)
 
+    @property
+    def __dict__(self):
+        return {
+            'platform': self.platform,
+            'distro': self.distro,
+            'build': self.build,
+            'plexpass': self.plexpass,
+            'date': self.date,
+            'version_string': self.version_string,
+            'url': self.url
+        }
+
 
 __all__ = ('PlexVersion',)
