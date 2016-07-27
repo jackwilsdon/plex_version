@@ -5,16 +5,17 @@ Version information is retrieved from https://plex.tv.
 
 from os import path as _path
 import setuptools as _setuptools
-from setup_functions import get_file_content
+from setup_functions import get_file_content, get_assignment_value
 
 
 setup_directory = _path.dirname(__file__)
+init_path = _path.join(setup_directory, 'plex_version', '__init__.py')
 readme_path = _path.join(setup_directory, 'README.rst')
 
 
 _setuptools.setup(
     name='plex_version',
-    version='1.0.5',
+    version=get_assignment_value(init_path, '__version__', True),
     description='Plex Version API',
     long_description=get_file_content(readme_path),
     author='Jack Wilsdon',
