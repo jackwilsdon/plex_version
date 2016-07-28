@@ -18,6 +18,10 @@ class Client(object):
         if username is not None or password is not None:
             self.login(username, password)
 
+    @property
+    def logged_in(self):
+        return self.auth_token is not None
+
     def _complete_login(self, response):
         response_dict = response.json()
 
@@ -88,7 +92,7 @@ class Client(object):
         if plexpass:
             data['channel'] = 'plexpass'
 
-        if self.auth_token is not None:
+        if self.logged_in:
             headers['X-Plex-Token'] = self.auth_token
 
         if timeout is None:
