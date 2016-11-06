@@ -1,5 +1,5 @@
 from . import client, exceptions, version
 
-__version__ = '1.0.10.dev0'
+__version__ = '1.0.10'
 
 __all__ = ('client', 'exceptions', 'version')
