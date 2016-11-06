@@ -21,7 +21,7 @@ _setuptools.setup(
     author='Jack Wilsdon',
     author_email='jack.wilsdon@gmail.com',
     url='https://github.com/jackwilsdon/plex_version',
-    license='AGPL-3.0',
+    packages=['plex_version'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
@@ -37,9 +37,9 @@ _setuptools.setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5'
     ],
+    license='AGPL-3.0',
     keywords='plex version',
-    packages=['plex_version'],
     install_requires=[
         'requests>=2,<3'
-    ]
+    ],
 )
