@@ -21,6 +21,7 @@ _setuptools.setup(
     author='Jack Wilsdon',
     author_email='jack.wilsdon@gmail.com',
     url='https://github.com/jackwilsdon/plex_version',
+    download_url='https://github.com/jackwilsdon/plex_version/tarball/develop',
     packages=['plex_version'],
     classifiers=[
         'Development Status :: 3 - Alpha',
