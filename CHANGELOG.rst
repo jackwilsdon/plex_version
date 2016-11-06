@@ -1,6 +1,10 @@
 Plex Version API Changelog
 ==========================
 
+1.0.11
+------
+ - Remove extraneous sample code from README
+
 1.0.10
 ------
  - Change README to use second level headers instead of third level
