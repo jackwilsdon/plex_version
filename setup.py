@@ -5,7 +5,7 @@ Version information is retrieved from https://plex.tv.
 
 from os import path as _path
 import setuptools as _setuptools
-import setup_functions as _setup_functions
+import _setup_functions
 
 
 _setup_directory = _path.dirname(__file__)
