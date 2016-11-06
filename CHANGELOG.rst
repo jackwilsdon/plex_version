@@ -1,6 +1,18 @@
 Plex Version API Changelog
 ==========================
 
+1.0.10
+------
+ - Change README to use second level headers instead of third level
+ - Update changelog to cover previous versions
+
+1.0.9
+-----
+ - Tidy up ``setup.py``
+   - Make all imports and variables "private" by prefixing them with an underscore
+   - Reorder setup arguments to follow order found in distutil documentation
+   - Add dynamically generated ``download_url`` to setup
+
 1.0.8
 -----
  - Add ``Client#logged_in`` method to check if a client is logged in
