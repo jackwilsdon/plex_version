@@ -8,23 +8,23 @@ import setuptools as _setuptools
 import setup_functions as _setup_functions
 
 
-setup_directory = _path.dirname(__file__)
-init_path = _path.join(setup_directory, 'plex_version', '__init__.py')
-readme_path = _path.join(setup_directory, 'README.rst')
-version = _setup_functions.get_assignment_value(init_path, '__version__', True)
-version_tag = 'develop' if version.endswith('.dev0') else version
-readme = _setup_functions.get_file_content(readme_path)
+_setup_directory = _path.dirname(__file__)
+_init_path = _path.join(_setup_directory, 'plex_version', '__init__.py')
+_readme_path = _path.join(_setup_directory, 'README.rst')
+_version = _setup_functions.get_assignment_value(_init_path, '__version__', True)
+_version_tag = 'develop' if _version.endswith('.dev0') else _version
+_readme = _setup_functions.get_file_content(_readme_path)
 
 
 _setuptools.setup(
     name='plex_version',
-    version=version,
+    version=_version,
     description='Plex Version API',
-    long_description=readme,
+    long_description=_readme,
     author='Jack Wilsdon',
     author_email='jack.wilsdon@gmail.com',
     url='https://github.com/jackwilsdon/plex_version',
-    download_url='https://github.com/jackwilsdon/plex_version/tarball/{}'.format(version_tag),
+    download_url='https://github.com/jackwilsdon/plex_version/tarball/{}'.format(_version_tag),
     packages=['plex_version'],
     classifiers=[
         'Development Status :: 3 - Alpha',
