@@ -8,10 +8,10 @@ Plex Version API is a Python library designed to the allow quick and easy retrie
 .. _plex.tv: `Plex Homepage`_
 
 Basic Usage
------------
+===========
 
 Retrieving a list of all public Plex versions from the API
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------------------------
 .. code-block:: python
 
     import plex_version
@@ -34,7 +34,7 @@ Retrieving a list of all public Plex versions from the API
     ]
 
 Retrieving a list of all Plex Pass versions from the API
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------------
 .. code-block:: python
 
     import plex_version
