@@ -2,7 +2,7 @@ Plex Version API Changelog
 ==========================
 
 1.0.8
-----------
+-----
  - Add ``Client#logged_in`` method to check if a client is logged in
 
 1.0.7
