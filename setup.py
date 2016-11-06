@@ -13,13 +13,14 @@ init_path = _path.join(setup_directory, 'plex_version', '__init__.py')
 readme_path = _path.join(setup_directory, 'README.rst')
 version = _setup_functions.get_assignment_value(init_path, '__version__', True)
 version_tag = 'develop' if version.endswith('.dev0') else version
+readme = _setup_functions.get_file_content(readme_path)
 
 
 _setuptools.setup(
     name='plex_version',
     version=version,
     description='Plex Version API',
-    long_description=_setup_functions.get_file_content(readme_path),
+    long_description=readme,
     author='Jack Wilsdon',
     author_email='jack.wilsdon@gmail.com',
     url='https://github.com/jackwilsdon/plex_version',
