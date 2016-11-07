@@ -129,4 +129,5 @@ class PlexVersion(object):
         }
 
 
-__all__ = ('PlexVersion',)
+__all__ = ('PLEX_MEDIA_SERVER', 'PLEX_HOME_THEATER', 'PLEX_MEDIA_PLAYER',
+           'PLEX_MEDIA_PLAYER_EMBEDDED', 'PlexVersion')
