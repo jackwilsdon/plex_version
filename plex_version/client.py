@@ -1,16 +1,18 @@
-import uuid as _uuid
-import requests as _requests
+import uuid
 
-from plex_version import exceptions as _exceptions
-from plex_version import version as _version
+import requests
+
+from plex_version import exceptions, version
 
 
 class Client(object):
     PLEX_LOGIN_URL = 'https://plex.tv/users/sign_in.json'
     PLEX_PLATFORM_URL = 'https://plex.tv/api/downloads/{}.json'
 
+    version_class = version.PlexVersion
+
     def __init__(self, username=None, password=None, timeout=5):
-        self.identifier = str(_uuid.uuid4())
+        self.identifier = str(uuid.uuid4())
         self.auth_token = None
         self.versions = []
         self.timeout = timeout
@@ -27,15 +29,15 @@ class Client(object):
 
         if response.status_code == 401:
             if 'error' in response_dict:
-                raise _exceptions.IncorrectLoginError(response_dict['error'])
+                raise exceptions.IncorrectLoginError(response_dict['error'])
             else:
-                raise _exceptions.IncorrectLoginError(response.content)
+                raise exceptions.IncorrectLoginError(response.content)
 
         try:
             self.auth_token = response_dict['user']['authentication_token']
         except KeyError:
-            raise _exceptions.ClientError('invalid response from server ' +
-                                          '(missing user)')
+            raise exceptions.ClientError('invalid response from server '
+                                         '(missing user)')
 
     def login(self, username, password, timeout=None):
         headers = {
@@ -50,17 +52,15 @@ class Client(object):
         if timeout is None:
             timeout = self.timeout
 
-        response = _requests.post(self.PLEX_LOGIN_URL,
-                                  headers=headers,
-                                  data=data,
-                                  timeout=timeout)
+        response = requests.post(self.PLEX_LOGIN_URL, headers=headers,
+                                 data=data, timeout=timeout)
 
         self._complete_login(response)
 
     def _complete_fetch_versions(self, platform, plexpass, response):
         if response.status_code != 200:
-            raise _exceptions.ClientError('expected 200 but got {}'.format(
-                                          response.status_code))
+            raise exceptions.ClientError('expected 200 but got {}'.format(
+                                         response.status_code))
 
         response_dict = {k: v for d in response.json().values()
                          for k, v in d.items()}
@@ -74,9 +74,8 @@ class Client(object):
                 build = release_data['build']
                 url = release_data['url']
 
-                version = _version.PlexVersion(platform, distro, build,
-                                               plexpass, date, version_string,
-                                               url)
+                version = self.version_class(platform, distro, build, plexpass,
+                                             date, version_string, url)
 
                 self.versions.append(version)
 
@@ -98,17 +97,15 @@ class Client(object):
         if timeout is None:
             timeout = self.timeout
 
-        response = _requests.get(url,
-                                 headers=headers,
-                                 data=data,
-                                 timeout=timeout)
+        response = requests.get(url, headers=headers, data=data,
+                                timeout=timeout)
 
         self._complete_fetch_versions(platform, plexpass, response)
 
     def _get_existing(self, platform, distro, build, plexpass):
         matches = []
 
-        for version in self.versions:
+        for version in self.versions:  # noqa: F402
             if platform is None or platform == version.platform:
                 if distro is None or distro == version.distro:
                     if build is None or build == version.build:

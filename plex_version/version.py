@@ -1,4 +1,4 @@
-import re as _re
+import re
 
 
 PLEX_MEDIA_SERVER = 1
@@ -8,7 +8,7 @@ PLEX_MEDIA_PLAYER_EMBEDDED = 4
 
 
 def _parse_version(version_string):
-    matches = _re.match(r'^(\d+)\.(\d+)\.(\d+)\.(\d+)-([A-Fa-f0-9]+)',
+    matches = re.match(r'^(\d+)\.(\d+)\.(\d+)\.(\d+)-([A-Fa-f0-9]+)',
                         version_string)
     groups = matches.groups()
 
