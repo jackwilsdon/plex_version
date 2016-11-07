@@ -9,7 +9,7 @@ PLEX_MEDIA_PLAYER_EMBEDDED = 4
 
 def _parse_version(version_string):
     matches = re.match(r'^(\d+)\.(\d+)\.(\d+)\.(\d+)-([A-Fa-f0-9]+)',
-                        version_string)
+                       version_string)
     groups = matches.groups()
 
     if len(groups) != 5:
