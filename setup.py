@@ -1,25 +1,22 @@
-'''Plex Version API
+from os import path
 
-Version information is retrieved from https://plex.tv.
-'''
+import setuptools
 
-from os import path as _path
-import setuptools as _setuptools
-import _setup_functions
+import setup_functions
 
 
-_setup_directory = _path.dirname(__file__)
-_init_path = _path.join(_setup_directory, 'plex_version', '__init__.py')
-_readme_path = _path.join(_setup_directory, 'README.rst')
-_version = _setup_functions.get_assignment_value(_init_path, '__version__', True)
-_readme = _setup_functions.get_file_content(_readme_path)
+setup_directory = path.dirname(__file__)
+init_path = path.join(setup_directory, 'plex_version', '__init__.py')
+readme_path = path.join(setup_directory, 'README.rst')
+version = setup_functions.get_assignment_value(init_path, '__version__', True)
+readme = setup_functions.get_file_content(readme_path)
 
 
-_setuptools.setup(
+setuptools.setup(
     name='plex_version',
-    version=_version,
+    version=version,
     description='Plex Version API',
-    long_description=_readme,
+    long_description=readme,
     author='Jack Wilsdon',
     author_email='jack.wilsdon@gmail.com',
     url='https://github.com/jackwilsdon/plex_version',
@@ -45,3 +42,6 @@ _setuptools.setup(
         'requests>=2,<3'
     ],
 )
+
+
+__all__ = ()
