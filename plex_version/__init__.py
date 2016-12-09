@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from plex_version.client import Client
 from plex_version.exceptions import ClientError, IncorrectLoginError
 from plex_version.version import (PLEX_HOME_THEATER, PLEX_MEDIA_PLAYER,
