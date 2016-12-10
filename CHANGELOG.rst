@@ -1,8 +1,19 @@
 Plex Version API Changelog
 ==========================
 
-1.0.11
-------
+1.1.2
+-----
+ - Move network functionality into it's own method, allowing it to be overridden
+ - Use absolute imports everywhere
+
+1.1.1
+-----
+ - Add missing ``setup_functions.py`` to distribution
+
+1.1.0
+-----
+ - Import all classes and constants into root ``plex_version`` module
+ - Tidy up code by removing underscore prefixes and by using ``__all__`` instead
  - Remove extraneous sample code from README
 
 1.0.10
