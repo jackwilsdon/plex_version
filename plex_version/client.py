@@ -26,6 +26,9 @@ class Client(object):
     def logged_in(self):
         return self.auth_token is not None
 
+    def request(self, *args, **kwargs):
+        return requests.request(*args, **kwargs)
+
     def _complete_login(self, response):
         response_dict = response.json()
 
@@ -54,8 +57,8 @@ class Client(object):
         if timeout is None:
             timeout = self.timeout
 
-        response = requests.post(self.PLEX_LOGIN_URL, headers=headers,
-                                 data=data, timeout=timeout)
+        response = self.request('POST', self.PLEX_LOGIN_URL, headers=headers,
+                                data=data, timeout=timeout)
 
         self._complete_login(response)
 
@@ -99,7 +102,7 @@ class Client(object):
         if timeout is None:
             timeout = self.timeout
 
-        response = requests.get(url, headers=headers, data=data,
+        response = self.request('GET', url, headers=headers, data=data,
                                 timeout=timeout)
 
         self._complete_fetch_versions(platform, plexpass, response)
